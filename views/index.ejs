@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>I'm Bored</title>
+  </head>
+
+  <body>
+    
+    <div class="container">
+      <h1>Let's find some joke 🗿</h1>
+
+      <form action="/" id="form" class="form" method="POST">
+        <select name="category" class="form-select">
+          <option value="Any" data-display="Select">Any category</option>
+          <option value="Programming">Programming</option>
+          <option value="Miscellaneous">Mics</option>
+          <option value="Dark">Dark</option>
+          <option value="Pun">Pun</option>
+          <option value="Spooky">Spooky</option>
+          <option value="Christmas">Christmas</option>
+        </select>
+        <select name="type" class="form-select">
+          <option value="">Any type</option>
+          <option value="single">Single</option>
+          <option value="twopart">Two Part</option>
+        </select>
+
+        <button type="submit" class="form-submit">Go</button>
+      </form>
+
+      <section id="cards" class="cards">
+        <% if (locals.data) { %>
+        <article class="card-item">
+          <h2 class="card-activity"><%= data.joke %> <%= data.setup %></h2>
+          <p class="card-activity "><%= data.delivery %></p>
+          <div class="card-info">
+            <span class="card-category"> <%= data.category %> </span>
+            <span class="card-type">
+              Type:
+              <span class="card-number"> <%= data.type %> </span>
+            </span>
+          </div>
+        </article>
+        <% } %> <% if (locals.error) { %>
+        <div id="tag-error" class="tag-error">
+          <!-- Show any errors that were sent from the backend -->
+          <%= error %>
+        </div>
+        <% } %>
+      </section>
+    </div>
+  </body>
+</html>
